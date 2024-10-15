@@ -1,6 +1,8 @@
-let humanScore = 0;
+// Scores
+let userScore = 0;
 let computerScore = 0;
 
+// Create a computer choice
 function getComputerChoice() {
   const computerChoice = Math.floor(Math.random() * 3);
 
@@ -13,32 +15,34 @@ function getComputerChoice() {
   }
 }
 
-function getHumanChoice() {
-  const humanChoice = prompt('Rock, Paper or Scissors! Ready!? Go!');
-  return humanChoice.toLowerCase();
+// Gets user's choice
+function getUserChoice() {
+  const userChoice = prompt('Rock, Paper or Scissors! Ready!? Go!');
+  return userChoice.toLocaleLowerCase();
 }
 
-function playRound(humanChoice, computerChoice) {
-  if (humanChoice === computerChoice) {
+const userSelection = getUserChoice();
+const computerSelection = getComputerChoice();
+
+// Play a round
+function playRound(userChoice, computerChoice) {
+  if (userChoice === computerChoice) {
     console.log("It's a tie!");
-  } else if (humanChoice === 'paper' && computerChoice === 'rock') {
-    console.log(`You won! ${humanChoice} beats ${computerChoice}`);
-    humanScore++;
-  } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-    console.log(`You won! ${humanChoice} beats ${computerChoice}`);
-    humanScore++;
-  } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-    console.log(`You won! ${humanChoice} beats ${computerChoice}`);
-    humanScore++;
+  } else if (userChoice === 'paper' && computerChoice === 'rock') {
+    console.log(`You won! ${userChoice} beats ${computerChoice}`);
+    userScore++;
+  } else if (userChoice === 'rock' && computerChoice === 'scissors') {
+    console.log(`You won! ${userChoice} beats ${computerChoice}`);
+    userScore++;
+  } else if (userChoice === 'scissors' && computerChoice === 'paper') {
+    console.log(`You won! ${userChoice} beats ${computerChoice}`);
+    userScore++;
   } else {
-    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+    console.log(`You lose! ${computerChoice} beats ${userChoice}`);
     computerScore++;
   }
 
-  console.log(`User score: ${humanScore} -- Computer score: ${computerScore}`);
+  console.log(`User score: ${userScore} --- Computer score: ${computerScore}`);
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+playRound(userSelection, computerSelection);
