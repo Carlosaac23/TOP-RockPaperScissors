@@ -1,3 +1,63 @@
+@font-face {
+  font-family: 'GeistMono-Bold';
+  src: url('/fonts/GeistMono-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'GeistMono-Regular';
+  src: url('/fonts/GeistMono-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'GeistMono-UltraLight';
+  src: url('/fonts/GeistMono-UltraLight.ttf');
+}
+
 body {
+  font-family: GeistMono-Regular, sans-serif;
   background-color: #1f1f1f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  font-family: GeistMono-Bold, sans-serif;
+  font-size: 1rem;
+  background-color: #010101;
+  padding: 14px 30px;
+  border: 1px solid #ededed;
+  border-radius: 14px;
+  color: #ededed;
+  transition: opacity 0.3s;
+}
+
+.button:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+.container {
+  padding-top: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.result {
+  padding-top: 5em;
+  color: #ededed;
+  font-size: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scores {
+  font-family: GeistMono-UltraLight, sans-serif;
+  color: #ededed;
+  font-size: 2rem;
+  padding-top: 1em;
 }
