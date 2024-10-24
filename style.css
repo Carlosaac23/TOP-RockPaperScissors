@@ -15,26 +15,29 @@
 
 body {
   font-family: GeistMono-Regular, sans-serif;
-  background-color: #1f1f1f;
+  background-color: #ededed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .button {
   font-family: GeistMono-Bold, sans-serif;
   font-size: 1rem;
-  background-color: #010101;
+  background-color: #ededed;
   padding: 14px 30px;
-  border: 1px solid #ededed;
+  border: none;
   border-radius: 14px;
-  color: #ededed;
-  transition: opacity 0.3s;
+  color: #1f1f1f;
+  box-shadow: inset rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .button:hover {
-  opacity: 0.75;
+  background-color: #dddddd;
+  transform: translateY(-4px);
   cursor: pointer;
 }
 
@@ -43,12 +46,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 1.5em;
 }
 
 .result {
+  width: 80%;
   padding-top: 5em;
-  color: #ededed;
+  color: #1f1f1f;
   font-size: 2.5rem;
   display: flex;
   flex-direction: column;
@@ -56,8 +60,22 @@ body {
 }
 
 .scores {
+  width: 80%;
   font-family: GeistMono-UltraLight, sans-serif;
-  color: #ededed;
+  color: #1f1f1f;
   font-size: 2rem;
   padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .result {
+    font-size: 1.5rem;
+  }
+
+  .scores {
+    font-size: 1.25rem;
+  }
 }
