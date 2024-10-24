@@ -2,6 +2,21 @@ let buttonsDiv = document.querySelector('.container');
 let resultDiv = document.querySelector('.result');
 let scoresDiv = document.querySelector('.scores');
 
+// User's buttons
+let paperBtn = document.createElement('button');
+let rockBtn = document.createElement('button');
+let scissorsBtn = document.createElement('button');
+
+buttonsDiv.appendChild(paperBtn);
+paperBtn.textContent = 'Paper';
+paperBtn.classList.add('button');
+buttonsDiv.appendChild(rockBtn);
+rockBtn.textContent = 'Rock';
+rockBtn.classList.add('button');
+buttonsDiv.appendChild(scissorsBtn);
+scissorsBtn.textContent = 'Scissors';
+scissorsBtn.classList.add('button');
+
 // Create a computer choice
 function getComputerChoice() {
   const computerChoice = Math.floor(Math.random() * 3);
@@ -19,7 +34,6 @@ function playGame() {
   // Scores
   let userScore = 0;
   let computerScore = 0;
-
   let roundCount = 0;
 
   // Play a round
@@ -29,7 +43,7 @@ function playGame() {
     const computerChoiceCapitalize = computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1).toLowerCase();
 
     if (userChoice === computerChoice) {
-      resultDiv.textContent = "It's a tie!";
+      resultDiv.textContent = `It's a tie! Both have chosen ${userChoiceCapitalize}`;
     } else if (userChoice === 'paper' && computerChoice === 'rock') {
       resultDiv.textContent = `You won! ${userChoiceCapitalize} beats ${computerChoiceCapitalize}`;
       userScore++;
@@ -44,7 +58,16 @@ function playGame() {
       computerScore++;
     }
 
-    scoresDiv.textContent = `User score: ${userScore} --- Computer score: ${computerScore}`;
+    scoresDiv.innerHTML = '';
+
+    const userScoreDiv = document.createElement('div');
+    userScoreDiv.textContent = `User score: ${userScore}`;
+    scoresDiv.appendChild(userScoreDiv);
+
+    const computerScoreDiv = document.createElement('div');
+    computerScoreDiv.textContent = `Computer score: ${computerScore}`;
+    scoresDiv.appendChild(computerScoreDiv);
+
     roundCount++;
 
     if (roundCount === 5) {
@@ -56,25 +79,16 @@ function playGame() {
         resultDiv.textContent = 'YOU HAVE LOST! MACHINES WILL RULE THE WORLD';
       }
 
-      userScore = 0;
-      computerScore = 0;
-      roundCount = 0;
+      // Delete all after 2.5 seconds to start playing again
+      setTimeout(() => {
+        userScore = 0;
+        computerScore = 0;
+        roundCount = 0;
+        resultDiv.textContent = '';
+        scoresDiv.textContent = '';
+      }, 2500);
     }
   }
-
-  let paperBtn = document.createElement('button');
-  let rockBtn = document.createElement('button');
-  let scissorsBtn = document.createElement('button');
-
-  buttonsDiv.appendChild(paperBtn);
-  paperBtn.textContent = 'Paper';
-  paperBtn.classList.add('button');
-  buttonsDiv.appendChild(rockBtn);
-  rockBtn.textContent = 'Rock';
-  rockBtn.classList.add('button');
-  buttonsDiv.appendChild(scissorsBtn);
-  scissorsBtn.textContent = 'Scissors';
-  scissorsBtn.classList.add('button');
 
   paperBtn.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
@@ -90,4 +104,4 @@ function playGame() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => playGame());
+playGame();
